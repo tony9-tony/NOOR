@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://noor1ll.github.io/rush-motor/sitemap.xml

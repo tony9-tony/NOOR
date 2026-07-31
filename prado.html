@@ -1,0 +1,96 @@
+﻿<!DOCTYPE html>
+<html lang="sw">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOYOTA PRADO - Rush MotorsSS</title>
+    <link rel="stylesheet" href="car-detail.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo"><img src="rush.jpg.jpg" alt="Rush MotorsSS logo" class="logo-img"> <span>Rush MotorsSS</span></div>
+            <ul class="nav-links">
+                <li><a href="rush.html">Home</a></li>
+                <li><a href="cars.html" class="active">Cars</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="service.html">Service</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="header-banner">
+        <h2>TOYOTA PRADO - MAELEZO NA VIPENGELE</h2>
+    </div>
+
+    <main class="details-container">
+        <div class="details-grid">
+            <div class="car-image-section">
+                <div class="car-image-box">
+                    <a href="#" id="prev-car" class="car-nav-btn" aria-label="View previous car">‹</a>
+                    <img id="car-image-display" src="prado.jpg" alt="Toyota Prado" class="main-img car-image-main">
+                    <a href="#" id="next-car" class="car-nav-btn" aria-label="View next car">›</a>
+                </div>
+            </div>
+
+            <div class="car-info-section">
+                <h2 class="car-title">TOYOTA PRADO</h2>
+                <p class="car-price">BEI: 450,000,000</p>
+                <p class="car-description">SUV yenye uwezo wa barabarani na muonekano wa kisasa wa safari.</p>
+
+                <div class="specs-section">
+                    <h3>Sehemu & Vipengele vya Gari</h3>
+                    <ul class="specs-list">
+                        <li><strong>Vipengele:</strong> 2.8L Turbo Diesel</li>
+                        <li><strong>Vipengele:</strong> 6-Speed Automatic</li>
+                        <li><strong>Vipengele:</strong> 4WD</li>
+                        <li><strong>Vipengele:</strong> Diesel</li>
+                        <li><strong>Vipengele:</strong> 7 Seats</li>
+                        <li><strong>Vipengele:</strong> 17-inch Alloy Wheels</li>
+                        <li><strong>Vipengele:</strong> Kinetic Dynamic Suspension</li>
+                    </ul>
+                </div>
+
+                <a href="contact.html" class="buy-btn">WEKA ODA AU ULIZIA</a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Rush MotorsSS. Haki zote zimehifadhiwa.</p>
+    </footer>
+
+    <script>
+        const carImages = [
+            { src: 'prado.jpg', alt: 'Toyota Prado' }
+        ];
+
+        let currentImageIndex = 0;
+        const imageElement = document.getElementById('car-image-display');
+        const prevButton = document.getElementById('prev-car');
+        const nextButton = document.getElementById('next-car');
+
+        function showImage(index) {
+            currentImageIndex = (index + carImages.length) % carImages.length;
+            imageElement.src = carImages[currentImageIndex].src;
+            imageElement.alt = carImages[currentImageIndex].alt;
+        }
+
+        prevButton.addEventListener('click', function (event) {
+            event.preventDefault();
+            showImage(currentImageIndex - 1);
+        });
+
+        nextButton.addEventListener('click', function (event) {
+            event.preventDefault();
+            showImage(currentImageIndex + 1);
+        });
+
+        showImage(currentImageIndex);
+    </script>
+</body>
+</html>
+
+
+

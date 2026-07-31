@@ -1,0 +1,191 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', Arial, sans-serif;
+}
+
+:root {
+    --primary-orange: #ff8c00;
+    --dark-bg: #111111;
+    --text-light: #ffffff;
+    --text-dark: #222222;
+}
+
+body {
+    background-color: #1e1e1e;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.78), rgba(0, 0, 0, 0.78)), url('landcruiserzx.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: var(--text-dark);
+    line-height: 1.6;
+    min-height: 100vh;
+    min-width: 1200px;
+}
+
+.navbar {
+    background-color: var(--dark-bg);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5%;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    width: 100%;
+}
+
+.logo {
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--text-light);
+    display: inline-flex;
+    gap: 10px;
+    align-items: center;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.06);
+}
+
+.logo-img {
+    width: 56px;
+    height: 56px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid var(--primary-orange);
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.2);
+}
+
+.logo span {
+    color: var(--primary-orange);
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+    align-items: center;
+}
+
+.nav-links a {
+    color: var(--text-light) !important;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 15px;
+    padding: 6px 12px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--primary-orange) !important;
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+.header-banner {
+    background: var(--primary-orange);
+    color: #111111;
+    text-align: center;
+    padding: 12px 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    width: 100%;
+}
+
+.header-banner h2 {
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+.services-container {
+    width: 85%;
+    max-width: 1200px;
+    margin: 40px auto;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+}
+
+.service-card {
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+}
+
+.service-icon {
+    font-size: 40px;
+    margin-bottom: 15px;
+}
+
+.service-card h3 {
+    font-size: 20px;
+    color: var(--dark-bg);
+    margin-bottom: 12px;
+    font-weight: 700;
+    border-bottom: 3px solid var(--primary-orange);
+    display: inline-block;
+    padding-bottom: 4px;
+}
+
+.service-card p {
+    font-size: 14px;
+    color: #555555;
+    line-height: 1.7;
+}
+
+footer {
+    background: var(--dark-bg);
+    color: #888888;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 14px;
+    margin-top: 50px;
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+    body {
+        min-width: 0;
+        background-attachment: scroll;
+    }
+
+    .navbar {
+        flex-direction: column;
+        padding: 12px;
+        gap: 10px;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px 12px;
+    }
+
+    .services-container {
+        width: 92%;
+        margin: 20px auto;
+    }
+
+    .services-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .service-card {
+        padding: 20px;
+    }
+}

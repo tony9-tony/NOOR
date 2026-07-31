@@ -1,0 +1,180 @@
+/* --- Global Resets --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f4f6f8;
+    color: #222;
+}
+
+/* --- Header / Navigation Bar --- */
+.navbar {
+    background-color: #111111;
+    padding: 15px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.navbar .logo {
+    color: #ffffff;
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.navbar .logo span {
+    color: ff8c00;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+}
+
+.nav-links a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 4px;
+    transition: 0.3s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: #111;
+    background-color: ff8c00;
+}
+
+/* --- Title Banner --- */
+.header-banner {
+    background: #111111;
+    color: #ffffff;
+    text-align: center;
+    padding: 30px 20px;
+    border-bottom: 4px solid ff8c00;
+}
+
+.header-banner h2 {
+    font-size: 28px;
+    color: ff8c00;
+    margin-bottom: 5px;
+}
+
+.header-banner p {
+    color: #ccc;
+    font-size: 14px;
+}
+
+/* --- Main Layout Wrapper --- */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 40px auto;
+}
+
+/* --- Grid ya Magari (3 Columns) --- */
+.cars-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    justify-content: center;
+}
+
+/* --- Car Card Style --- */
+.car-card {
+    background: #ffffff;
+    width: 350px; /* Vipimo kamili vya upana wa kadi */
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #e0e0e0;
+}
+
+.car-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 20px rgba(255, 140, 0, 0.3);
+    border-color: ff8c00;
+}
+
+/* Picha ya Gari - Haiwezi kurefuka au kunyooka tena */
+.img-wrapper {
+    width: 100%;
+    height: 210px; /* Urefu uliopimwa wa picha */
+    overflow: hidden;
+    background-color: #eaeaea;
+}
+
+.img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Inazuia picha kujivuta au kubadilika muonekano */
+}
+
+/* Text & Details */
+.card-body {
+    padding: 18px;
+    text-align: left;
+}
+
+.car-card h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #111;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+}
+
+.car-card .price {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.car-card .price span {
+    color: ff8c00;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.btn-buy {
+    display: block;
+    width: 100%;
+    text-align: center;
+    background: #111;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 0;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: bold;
+    transition: background 0.3s ease;
+}
+
+.btn-buy:hover {
+    background: ff8c00;
+    color: #111;
+}
+
+/* Footer */
+footer {
+    background: #111;
+    color: #777;
+    text-align: center;
+    padding: 20px;
+    font-size: 13px;
+    margin-top: 50px;
+}
