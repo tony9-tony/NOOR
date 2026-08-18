@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="sw">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karibu - Rush Motors</title>
+    <link rel="stylesheet" href="rush.css">
+</head>
+<body>
+    <header class="navbar">
+        <a href="rush.html" class="logo"><img src="rush.jpg.jpg" alt="Rush Motors logo" class="logo-img"> <span>Rush Motors</span></a>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="rush.html">Home</a></li>
+                <li><a href="cars.html">Cars</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="service.html">Services</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="login-page">
+        <div class="login-card">
+            <h2 id="welcome-title">Karibu</h2>
+            <p id="welcome-message">Umeingia kwa mafanikio.</p>
+            <button id="logout-btn" class="btn btn-primary login-btn">Ondoka</button>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 Rush Motors. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function getQueryParam(name) {
+            const params = new URLSearchParams(window.location.search);
+            return params.get(name);
+        }
+
+        const username = getQueryParam('user');
+        if (username) {
+            document.getElementById('welcome-title').textContent = `Karibu, ${decodeURIComponent(username)}!`;
+            document.getElementById('welcome-message').textContent = 'Umeingia kwa mafanikio katika Rush Motors.';
+        }
+
+        document.getElementById('logout-btn').addEventListener('click', function() {
+            window.location.href = 'login.html';
+        });
+    </script>
+</body>
+</html>

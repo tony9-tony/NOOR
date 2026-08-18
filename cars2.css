@@ -178,3 +178,15 @@ footer {
     font-size: 13px;
     margin-top: 50px;
 }
+/* Site-wide logo alignment fix */
+.navbar .logo,
+.logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    line-height: 1;
+}
+.logo span {
+    display: inline-block;
+    transform: translateY(-1px);
+}

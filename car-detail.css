@@ -290,4 +290,83 @@ footer {
     .buy-btn {
         width: 100%;
     }
+
+    .parts-slider {
+        margin-top: 30px;
+        background: #ffffff;
+        padding: 24px;
+        border-radius: 16px;
+        box-shadow: 0 14px 32px rgba(0, 0, 0, 0.08);
+    }
+
+    .parts-slider h3 {
+        margin-bottom: 18px;
+        font-size: 20px;
+        color: var(--dark-bg);
+    }
+
+    .parts-display {
+        display: grid;
+        gap: 18px;
+    }
+
+    .part-card {
+        display: grid;
+        gap: 20px;
+        background: #f9f5ef;
+        border-radius: 14px;
+        padding: 22px;
+        border: 1px solid rgba(255, 140, 0, 0.14);
+    }
+
+    .part-image-placeholder {
+        min-height: 180px;
+        border-radius: 14px;
+        background: linear-gradient(135deg, rgba(255, 152, 0, 0.18), rgba(255, 206, 150, 0.12));
+        color: #333333;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+        font-weight: 700;
+        text-align: center;
+        padding: 16px;
+    }
+
+    .part-info h4 {
+        margin: 0 0 12px;
+        font-size: 19px;
+        color: var(--dark-bg);
+    }
+
+    .part-info p {
+        margin: 0;
+        color: #555555;
+        line-height: 1.7;
+    }
+
+    .parts-controls {
+        display: flex;
+        justify-content: flex-end;
+        gap: 12px;
+        margin-top: 20px;
+    }
+
+    .parts-controls .car-nav-btn {
+        width: 48px;
+        height: 48px;
+        font-size: 24px;
+    }
+}
+/* Site-wide logo alignment fix */
+.navbar .logo,
+.logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    line-height: 1;
+}
+.logo span {
+    display: inline-block;
+    transform: translateY(-1px);
 }

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="sw">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ingia - Rush Motors</title>
+    <link rel="stylesheet" href="rush.css">
+</head>
+<body>
+    <header class="navbar">
+        <a href="rush.html" class="logo"><img src="rush.jpg.jpg" alt="Rush Motors logo" class="logo-img"> <span>Rush Motors</span></a>
+        <button class="menu-toggle" aria-label="Open navigation" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <nav class="nav-menu" aria-label="Primary navigation">
+            <ul class="nav-links">
+                <li><a href="rush.html">Home</a></li>
+                <li><a href="cars.html">Cars</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="service.html">Service</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="login-page">
+        <div class="login-card">
+            <h2>Ingia</h2>
+            <form id="login-form" class="login-form">
+                <label for="username">Jina la Mtumiaji</label>
+                <input type="text" id="username" name="username" placeholder="Jina lako" required>
+
+                <label for="email">Barua Pepe</label>
+                <input type="email" id="email" name="email" placeholder="Barua pepe" required>
+
+                <label for="password">Nenosiri</label>
+                <input type="password" id="password" name="password" placeholder="Nenosiri" required>
+
+                <button type="submit" class="btn btn-primary login-btn">Ingia</button>
+                <button type="button" id="google-btn" class="btn google-btn">Continue with Google</button>
+            </form>
+            <p class="login-note">Tafadhali ingiza taarifa zako ili kuendelea.</p>
+            <p class="login-note">Hujasajili bado? <a href="signup.html">Unda akaunti</a></p>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 Rush Motors. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script>
+        const API_BASE_URL = '';
+
+        console.log('Using same-origin API base for public ngrok/mobile access.');
+        const googleClientId = 'YOUR_GOOGLE_CLIENT_ID.apps.googleusercontent.com';
+
+        function isGoogleConfigured() {
+            return !!googleClientId && !googleClientId.includes('YOUR_GOOGLE_CLIENT_ID');
+        }
+
+        function submitGoogleLikeLogin(actionType, username, email) {
+            const data = {
+                username: username.trim(),
+                email: email.trim(),
+                password: 'GOOGLE_AUTH',
+                action: actionType
+            };
+
+            fetch(`${API_BASE_URL}/api/auth/${actionType}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(async response => {
+                const text = await response.text();
+                if (!response.ok) {
+                    throw new Error(text || `HTTP ${response.status}`);
+                }
+                return text;
+            })
+            .then(message => {
+                alert(message || 'Imefanikiwa.');
+                window.location.href = `welcome.html?user=${encodeURIComponent(username.trim())}`;
+            })
+            .catch(error => {
+                console.error(error);
+                alert(`Google login failed: ${error.message || 'Try again.'}`);
+            });
+        }
+
+        function handleGoogleCredential(response, actionType) {
+            if (!response.credential) {
+                alert('Google login failed.');
+                return;
+            }
+
+            fetch(`https://oauth2.googleapis.com/tokeninfo?id_token=${encodeURIComponent(response.credential)}`)
+                .then(res => res.json())
+                .then(payload => {
+                    if (payload.aud !== googleClientId) {
+                        throw new Error('Invalid Google client ID.');
+                    }
+
+                    const username = payload.name || payload.email;
+                    const data = {
+                        username,
+                        email: payload.email,
+                        password: 'GOOGLE_AUTH',
+                        action: actionType
+                    };
+
+                    return fetch(`${API_BASE_URL}/api/auth/login`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(data)
+                    })
+                    .then(response => response.text())
+                    .then(message => {
+                        alert(message);
+                        window.location.href = `welcome.html?user=${encodeURIComponent(username)}`;
+                    });
+                })
+                .catch(error => {
+                    console.error(error);
+                    alert('Kosa la kuwasilisha kupitia Google. Jaribu tena.');
+                });
+        }
+
+        function initGoogleSignIn() {
+            if (window.google && google.accounts && google.accounts.id) {
+                google.accounts.id.initialize({
+                    client_id: googleClientId,
+                    callback: (response) => handleGoogleCredential(response, 'login'),
+                    cancel_on_tap_outside: true
+                });
+            }
+        }
+
+        document.getElementById('login-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const data = {
+                username: document.getElementById('username').value,
+                email: document.getElementById('email').value,
+                password: document.getElementById('password').value,
+                action: 'login'
+            };
+
+            fetch(`${API_BASE_URL}/api/auth/login`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(async response => {
+                const text = await response.text();
+                if (!response.ok) {
+                    throw new Error(text || `HTTP ${response.status}`);
+                }
+                return text;
+            })
+            .then(message => {
+                alert(message || 'Imefanikiwa.');
+                const username = encodeURIComponent(document.getElementById('username').value);
+                window.location.href = `welcome.html?user=${username}`;
+            })
+            .catch(error => {
+                console.error(error);
+                alert(`Kosa la kuwasilisha. ${error.message || 'Jaribu tena.'}`);
+            });
+        });
+
+        document.getElementById('google-btn').addEventListener('click', function() {
+            if (!isGoogleConfigured()) {
+                const username = window.prompt('Google demo login: Enter your name', 'Google User');
+                const email = window.prompt('Google demo login: Enter your email', 'google.user@example.com');
+
+                if (!username || !email) {
+                    return;
+                }
+
+                submitGoogleLikeLogin('login', username, email);
+                return;
+            }
+            if (!window.google || !google.accounts || !google.accounts.id) {
+                alert('Google sign-in haijapakia bado. Jaribu tena wakati baadaye.');
+                return;
+            }
+            initGoogleSignIn();
+            google.accounts.id.prompt();
+        });
+
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+
+        menuToggle?.addEventListener('click', () => {
+            const isOpen = navMenu.classList.toggle('open');
+            menuToggle.setAttribute('aria-expanded', String(isOpen));
+            menuToggle.setAttribute('aria-label', isOpen ? 'Close navigation' : 'Open navigation');
+            document.body.classList.toggle('nav-toggle-open', isOpen);
+        });
+    </script>
+</body>
+</html>

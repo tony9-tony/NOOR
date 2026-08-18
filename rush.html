@@ -17,23 +17,27 @@
     <link rel="stylesheet" href="rush.css">
 </head>
 <body>
-
-
     <header class="navbar">
-        <div class="logo"><img src="rush.jpg.jpg" alt="Rush Motors logo" class="logo-img"> <span>Rush Motors</span></div>
-        <nav>
+        <a href="rush.html" class="logo"><img src="rush.jpg.jpg" alt="Rush Motors logo" class="logo-img"> <span>Rush Motors</span></a>
+        <button class="menu-toggle" aria-label="Open navigation" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <nav class="nav-menu" aria-label="Primary navigation">
             <ul class="nav-links">
                 <li><a href="cars.html">Cars</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="service.html">Services</a></li>
                 <li><a href="contact.html">Contact</a></li>
+                <li><a href="login.html" class="login-button">Login</a></li>
             </ul>
         </nav>
     </header>
 
 
     <div class="ticker-bar">
-        <p>ðŸ”¥ KARIBU Rush Motors â€” TUNAUZA MAGARI YA KISASA KWA UBORA WA HALI YA JUU ðŸ”¥</p>
+        <p>KARIBU Rush Motors TUNAUZA MAGARI YA KISASA KWA UBORA WA HALI YA JUU</p>
     </div>
 
 
@@ -51,7 +55,19 @@
         </div>
     </footer>
 
+    <script>
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+
+        menuToggle?.addEventListener('click', () => {
+            const isOpen = navMenu.classList.toggle('open');
+            menuToggle.setAttribute('aria-expanded', String(isOpen));
+            menuToggle.setAttribute('aria-label', isOpen ? 'Close navigation' : 'Open navigation');
+            document.body.classList.toggle('nav-toggle-open', isOpen);
+        });
+    </script>
 </body>
 </html>
+
 
 

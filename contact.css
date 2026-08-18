@@ -7,22 +7,19 @@
 
 :root {
     --primary-orange: #ff8c00;
+    --primary-hover: #e07b00;
     --dark-bg: #111111;
+    --light-bg: #f4f6f8;
     --text-light: #ffffff;
     --text-dark: #222222;
 }
 
 body {
-    background-color: #1e1e1e;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.78), rgba(0, 0, 0, 0.78)), url('landcruiserzx.jpg');
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    color: var(--text-dark);
+    background: #000000;
+    color: var(--text-light);
     line-height: 1.6;
     min-height: 100vh;
-    min-width: 1200px;
+    min-width: 0;
 }
 
 .navbar {
@@ -48,6 +45,7 @@ body {
     padding: 6px 12px;
     border-radius: 999px;
     background: rgba(255,255,255,0.06);
+    text-decoration: none;
 }
 
 .logo-img {
@@ -91,7 +89,7 @@ body {
     color: #111111;
     text-align: center;
     padding: 12px 20px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.18);
     width: 100%;
 }
 
@@ -103,8 +101,7 @@ body {
 }
 
 .contact-container {
-    width: 80%;
-    max-width: 1100px;
+    width: min(1100px, 90%);
     margin: 40px auto;
 }
 
@@ -112,13 +109,15 @@ body {
     display: grid;
     grid-template-columns: 1fr 1.2fr;
     gap: 30px;
+    align-items: stretch;
 }
 
 .contact-card {
-    background: #ffffff;
-    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.96);
+    border-radius: 18px;
     padding: 30px;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .contact-card h3 {
@@ -233,7 +232,6 @@ html, body {
 @media (max-width: 768px) {
     body {
         min-width: 0;
-        background-attachment: scroll;
     }
 
     .navbar {
@@ -278,4 +276,16 @@ html, body {
     .submit-btn {
         width: 100%;
     }
+}
+/* Site-wide logo alignment fix */
+.navbar .logo,
+.logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    line-height: 1;
+}
+.logo span {
+    display: inline-block;
+    transform: translateY(-1px);
 }

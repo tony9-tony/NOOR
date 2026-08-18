@@ -1,0 +1,6 @@
+#FileLock
+#Mon Aug 10 12:11:06 EAT 2026
+server=192.168.2.145\:52858
+hostName=192.168.2.145
+method=file
+id=19feaf0995d18a4fa5a504901fc998c90a0a0fc85c4
